@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @content.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @content.body %>
+</p>
+
+<% @content.comments.each do |comment| %>
+	<p><%= comment.body%></p>
+<%end%>
+
+<%= form_for [@content, Comment.new] do |f| %>
+	<%= f.text_area :body %>
+	<%= f.submit %>
+<%end%>
+
+
+<%= link_to 'Edit', edit_content_path(@content) %> |
+<%= link_to 'Back', contents_path %>
